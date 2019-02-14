@@ -1,25 +1,26 @@
 # Load libraries
-import sys
 from nlp_functions import read_str
+import argparse
+
+# Create a help message and define arguments for parser
+parser = argparse.ArgumentParser(description = 'Summarize inputted string')
+required_args = parser.add_argument_group('required arguments')
+required_args.add_argument('-i', help='Input string', required=True)
+parser.add_argument("-n", help="Number of lemmas to return (default = 3)", default=3)
+
+# Load arguments into args variable
+args = parser.parse_args()
 
 #-----------------------------------------------------------
-# Possible errors
-# 1. If user did not input a file, tell them to include one
-if len(sys.argv) < 2:
-    print("Oops - don't forget to input a text file!")
-    quit()
-
-# 2. If user inputted a file that isn't .txt, throw error
-if sys.argv[1][-4:] != '.txt':
+# If user inputted a file that isn't .txt, throw error
+if args.i[-4:] != '.txt':
     print("Error: txt_report only supports .txt files")
     quit()
 
 #-----------------------------------------------------------
 # Load file
-file = sys.argv[1]
-
-with open(file, 'r') as f:
+with open(args.i, 'r') as f:
     text = f.read().replace('\n', '')
 
 # Run read_str on the string
-read_str(text)
+read_str(text, int(args.n))

@@ -9,3 +9,9 @@ The script has the following format: <br>
 `python str_report.py [-h] -i "Hello" [-n 3]` <br>
 
 `-i` specifies the input string and `-n` sets the number of lemmas to return. If you can't remember the arguments, type `-h` to get a help menu.
+
+## `txt_report`
+Instead of inputting a string directly, we can also call a text file, as such:<br>
+![](txt_report_example.png)
+
+The format for this script is identical to `str_report`, except `-i` references the .txt file.

@@ -1,11 +1,15 @@
 # Load libraries
-import sys
 from nlp_functions import read_str
+import argparse
 
-# If user doesn't input anything, tell them to write something
-if len(sys.argv) < 2:
-    print("Oops - don't forget to input some text!")
-    quit()
+# Create a help message and define arguments for parser
+parser = argparse.ArgumentParser(description = 'Summarize inputted string')
+required_args = parser.add_argument_group('required arguments')
+required_args.add_argument('-i', help='Input string', required=True)
+parser.add_argument("-n", help="Number of lemmas to return (default = 3)", default=3)
+
+# Load arguments into args variable
+args = parser.parse_args()
 
 # Call read_str function
-read_str(sys.argv[1])
+read_str(args.i, int(args.n))

@@ -3,7 +3,7 @@ from nlp_functions import read_str
 import argparse
 
 # Create a help message and define arguments for parser
-parser = argparse.ArgumentParser(description = 'Summarize inputted string')
+parser = argparse.ArgumentParser(description = 'Summarize inputted text file')
 required_args = parser.add_argument_group('required arguments')
 required_args.add_argument('-i', help='Input string', required=True)
 parser.add_argument("-n", help="Number of lemmas to return (default = 3)", default=3)
